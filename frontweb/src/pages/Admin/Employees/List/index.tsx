@@ -36,9 +36,10 @@ const List = () => {
     const config: AxiosRequestConfig = {
       method: 'GET',
       url: '/employees',
+       withCredentials: true,
       params: {
         page: controlComponentsData.activePage,
-        size: 12,
+        size: 6,
       },
     };
 
@@ -70,8 +71,8 @@ const List = () => {
 
 
       <Pagination
-        forcePage={0}
-        pageCount={1}
+        forcePage={page?.number}
+        pageCount={(page) ? page.totalPages : 0}
         range={3}
         onChange={handlePagechange}
       />
